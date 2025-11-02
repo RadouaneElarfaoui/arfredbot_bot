@@ -41,7 +41,7 @@ dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
 dispatcher.add_error_handler(error)
 
 # Route principale pour le webhook
- @app.route('/', methods=['POST'])
+@app.route('/', methods=['POST'])
 def webhook_handler():
     if request.method == "POST":
         # Récupère le JSON envoyé par Telegram
@@ -51,7 +51,7 @@ def webhook_handler():
     return 'ok'
 
 # Route optionnelle pour vérifier que le serveur fonctionne
- @app.route('/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
     return 'Hello, World! Your bot is running.'
 
