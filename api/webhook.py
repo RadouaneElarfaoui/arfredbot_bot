@@ -35,8 +35,14 @@ def error(update, context):
     """Handler pour les erreurs."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
+def my_id(update, context):
+    """Handler for the /my_id command."""
+    user_id = update.effective_user.id
+    update.message.reply_text(f'Your Telegram ID is: {user_id}')
+
 # Enregistrement des handlers dans le dispatcher
 dispatcher.add_handler(CommandHandler("start", start))
+dispatcher.add_handler(CommandHandler("my_id", my_id))
 dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
 dispatcher.add_error_handler(error)
 
